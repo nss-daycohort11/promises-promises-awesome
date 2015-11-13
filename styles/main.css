@@ -13,8 +13,22 @@
     100% {background-color: chartreuse;}
 }
 
-#bookList *+*{
+@keyframes borderstrobe {
+    0% {border-top: 1px solid purple;}
+    25% {border-right: 1px solid purple;}
+    50% {border-bottom: 1px solid purple;}
+    75% {border-left: 1px solid purple;}
+    /*100% {border: 1px solid purple};*/
+}
+
+#bookList * + *{
 	margin-top: 15px;
+}
+
+.booky *{
+	animation-name: borderstrobe;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
 }
 
 body {
