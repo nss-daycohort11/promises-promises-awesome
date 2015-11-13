@@ -50,7 +50,7 @@ requirejs(
 
       // THIS ADDS ALL THE VALUES TO THE FILTER, EVEN DUPLICATES
       // require(['hbs!../templates/option'], function(bookfile) {
-      //   $("#bookFilter").html(bookfile({ books }));
+      //   $("#bookFilter").html(bookfile(uniqueTypes));
       // });
 
       // THIS POPULATES ONLY UNIQUE THINGS, BUT DOESN'T USE HANDLEBARS
@@ -72,6 +72,7 @@ requirejs(
       });
 
     }).then(function(){
+
       $("[name='type']").on('change', function(){
         filter(totalBooklist);
       });
