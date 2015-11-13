@@ -78,6 +78,7 @@ requirejs(
       require(['hbs!../templates/books'], function(bookTpl) {
         $("#bookList").html(bookTpl({ books }));
         totalBooklist = $("#bookList").html();
+
       });
 
     }).then(function(){
