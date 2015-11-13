@@ -13,8 +13,8 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery", "hbs", "lodash", "bootstrap", "get-books", "get-types", "filter"], 
-  function($, Handlebars, _, bootstrap, booker, types, filter) {
+  ["jquery", "hbs", "lodash", "bootstrap", "get-books", "get-types", "filter", "display"], 
+  function($, Handlebars, _, bootstrap, booker, types, filter, display) {
 
     console.log("getTypes in our promises.js", types);
     var globalTypes;
@@ -59,20 +59,19 @@ requirejs(
        uniqueTypes = _.uniq(uniqueTypes);
 
       // THIS ADDS ALL THE VALUES TO THE FILTER, EVEN DUPLICATES
-      // require(['hbs!../templates/option'], function(bookfile) {
-      //   $("#bookFilter").html(bookfile({ books }));
-      // });
+      require(['hbs!../templates/option'], function(bookfile) {
+        $("#bookFilter").html(bookfile({ books }));
+      });
 
       // THIS POPULATES ONLY UNIQUE THINGS, BUT DOESN'T USE HANDLEBARS
-        outputThis ="<select name='type'><option></option>";
-        for (i = 0; i < uniqueTypes.length; i++) {
-          outputThis += "<option>"+uniqueTypes[i]+"</option>";
-        };
-        outputThis +="<select>";
-      $("#bookFilter").html(outputThis);
+      //   outputThis ="<select name='type'><option></option>";
+      //   for (i = 0; i < uniqueTypes.length; i++) {
+      //     outputThis += "<option>"+uniqueTypes[i]+"</option>";
+      //   };
+      //   outputThis +="<select>";
+      // $("#bookFilter").html(outputThis);
 
-      console.log("BOOKS?", books);
-
+      // console.log("BOOKS?", books);
 
       require(['hbs!../templates/books'], function(bookTpl) {
         $("#bookList").html(bookTpl({ books }));
@@ -88,6 +87,7 @@ requirejs(
       console.log("error", error);
     });
 
+      
 
   }
 );
