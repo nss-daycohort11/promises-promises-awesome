@@ -7,9 +7,11 @@ function filterBooks(totalBooklist) {
 	$("#bookList").html(totalBooklist);
 
 	if (selected !== "") {
-    		var a = $(".booky[booktype='"+selected+"']");
-    		console.log("a", a);
-    		$("#bookList").html(a);
+
+    		var filtered = $(".booky[booktype='"+selected+"']");
+    		console.log("filtered", filtered);
+    		$("#bookList").html(filtered);
+
     }
 
 

@@ -1,5 +1,17 @@
-	<select>
-	{{#each books}}
-	  <option>{{type}}</option>
-	{{/each}}
-	</select>
+
+<div class='row'>
+	<div class='col-md-2 col-md-offset-1'>
+		<p>Filter by type</p>
+			<select name='type'>
+				<option></option>
+				{{#each this}}
+				<option>{{this}}</option>
+				{{/each}}
+    	</select>
+  </div>
+  <div class='col-md-9'>
+  	<h2>Awesome Bookstore</h2>
+  </div>
+</div>
+
+

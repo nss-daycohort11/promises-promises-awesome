@@ -1,0 +1,46 @@
+/* The animation code */
+@keyframes strobe {
+    0% {color: red;}
+    25% {color: orange;}
+    50% {color: blue;}
+    75% {color: yellow;}
+    100% {color: red;}
+}
+
+@keyframes brainhurt {
+    0% {background-color: chartreuse;}
+    50% {background-color: white;}
+    100% {background-color: chartreuse;}
+}
+
+@keyframes borderstrobe {
+    0% {border-top: 1px solid purple;}
+    25% {border-right: 1px solid purple;}
+    50% {border-bottom: 1px solid purple;}
+    75% {border-left: 1px solid purple;}
+    /*100% {border: 1px solid purple};*/
+}
+
+#bookList * + *{
+	margin-top: 15px;
+}
+
+.booky *{
+	animation-name: borderstrobe;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+}
+
+body {
+	background-color: chartreuse;
+	color: tomato;
+	animation-name: brainhurt;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+}
+
+h2 {
+    animation-name: strobe;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
