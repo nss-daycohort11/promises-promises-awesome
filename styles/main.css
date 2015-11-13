@@ -1,3 +1,32 @@
-.booky {
-	margin-top: 20px;
+/* The animation code */
+@keyframes strobe {
+    0% {color: red;}
+    25% {color: orange;}
+    50% {color: blue;}
+    75% {color: yellow;}
+    100% {color: red;}
+}
+
+@keyframes brainhurt {
+    0% {background-color: chartreuse;}
+    50% {background-color: white;}
+    100% {background-color: chartreuse;}
+}
+
+#bookList *+*{
+	margin-top: 15px;
+}
+
+body {
+	background-color: chartreuse;
+	color: tomato;
+	animation-name: brainhurt;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+}
+
+h2 {
+    animation-name: strobe;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }

@@ -54,11 +54,12 @@ requirejs(
       // });
 
       // THIS POPULATES ONLY UNIQUE THINGS, BUT DOESN'T USE HANDLEBARS
-        outputThis ="<select name='type'><option></option>";
+        outputThis ="<div class='row'><div class='col-md-2 col-md-offset-1'><p>Filter by type</p><select name='type'><option></option>";
         for (i = 0; i < uniqueTypes.length; i++) {
           outputThis += "<option>"+uniqueTypes[i]+"</option>";
         };
-        outputThis +="<select>";
+        outputThis +="</select></div><div class='col-md-9'><h2>Awesome Bookstore</h2></div></div>";
+        console.log("outputThis", outputThis);
       $("#bookFilter").html(outputThis);
 
       console.log("BOOKS?", books);
