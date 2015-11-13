@@ -49,18 +49,18 @@ requirejs(
        uniqueTypes = _.uniq(uniqueTypes);
 
       // THIS ADDS ALL THE VALUES TO THE FILTER, EVEN DUPLICATES
-      // require(['hbs!../templates/option'], function(bookfile) {
-      //   $("#bookFilter").html(bookfile(uniqueTypes));
-      // });
+      require(['hbs!../templates/option'], function(bookfile) {
+        $("#bookFilter").html(bookfile(uniqueTypes));
+      });
 
       // THIS POPULATES ONLY UNIQUE THINGS, BUT DOESN'T USE HANDLEBARS
-        outputThis ="<div class='row'><div class='col-md-2 col-md-offset-1'><p>Filter by type</p><select name='type'><option></option>";
-        for (i = 0; i < uniqueTypes.length; i++) {
-          outputThis += "<option>"+uniqueTypes[i]+"</option>";
-        };
-        outputThis +="</select></div><div class='col-md-9'><h2>Awesome Bookstore</h2></div></div>";
-        console.log("outputThis", outputThis);
-      $("#bookFilter").html(outputThis);
+      //   outputThis ="<div class='row'><div class='col-md-2 col-md-offset-1'><p>Filter by type</p><select name='type'><option></option>";
+      //   for (i = 0; i < uniqueTypes.length; i++) {
+      //     outputThis += "<option>"+uniqueTypes[i]+"</option>";
+      //   };
+      //   outputThis +="</select></div><div class='col-md-9'><h2>Awesome Bookstore</h2></div></div>";
+      //   console.log("outputThis", outputThis);
+      // $("#bookFilter").html(outputThis);
 
       console.log("BOOKS?", books);
 
@@ -68,19 +68,16 @@ requirejs(
       require(['hbs!../templates/books'], function(bookTpl) {
         $("#bookList").html(bookTpl({ books }));
         totalBooklist = $("#bookList").html();
-
       });
 
-    }).then(function(){
-
-      $("[name='type']").on('change', function(){
-        filter(totalBooklist);
-      });
     })
     .fail(function(error){
       console.log("error", error);
     });
 
+    $(document).on("change", "[name='type']", function(){
+      filter(totalBooklist);
+    });
 
   }
 );
