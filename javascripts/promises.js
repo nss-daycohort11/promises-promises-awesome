@@ -28,23 +28,12 @@ requirejs(
     }) //END OF FIRST THEN CALL (THE ONE FOR TYPES)
     .then(function(books) {
       var uniqueTypes = [];
-      /*
-            This code is dependent upon two XHRs and violates
-            the Single Responsibility Principle.
 
-            I've also given you a little preview of ES6 (the newest
-            version of JavaScript syntax). They are called fat arrows.
-            Check out the docs at http://es6-features.org/#ExpressionBodies
-          */
           globalTypes = Object.keys( globalTypes ).map(key => globalTypes[ key ]);
           books = Object.keys( books ).map(key => books[ key ]);
           console.log("globalTypes after keymap", globalTypes);
           console.log("books after keymap", books);
 
-          /*
-            I'm using the lodash `find()` method here.
-              https://lodash.com/docs#find
-           */
           var books = books.map(book => {
             book.type = _.find(globalTypes, { id:book.booktype }).label;
             console.log("THIS IS THE BOOK", book);
