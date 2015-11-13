@@ -13,11 +13,12 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery", "hbs", "lodash", "bootstrap", "get-books", "get-types"], 
-  function($, Handlebars, _, bootstrap, booker, types) {
+  ["jquery", "hbs", "lodash", "bootstrap", "get-books", "get-types", "filter"], 
+  function($, Handlebars, _, bootstrap, booker, types, filter) {
 
     console.log("getTypes in our promises.js", types);
     var globalTypes;
+    var totalBooklist;
 
     types()
     .then(function(types) {
@@ -64,24 +65,30 @@ requirejs(
       // });
 
       // THIS POPULATES ONLY UNIQUE THINGS, BUT DOESN'T USE HANDLEBARS
-        outputThis ="<select><option></option>";
+        outputThis ="<select name='type'><option></option>";
         for (i = 0; i < uniqueTypes.length; i++) {
           outputThis += "<option>"+uniqueTypes[i]+"</option>";
         };
         outputThis +="<select>";
       $("#bookFilter").html(outputThis);
 
-
       console.log("BOOKS?", books);
 
 
       require(['hbs!../templates/books'], function(bookTpl) {
         $("#bookList").html(bookTpl({ books }));
+        totalBooklist = $("#bookList").html();
       });
 
-    }).fail(function(error){
+    }).then(function(){
+      $("[name='type']").on('change', function(){
+        filter(totalBooklist);
+      });
+    })
+    .fail(function(error){
       console.log("error", error);
     });
+
 
   }
 );
