@@ -26,6 +26,7 @@ requirejs(
       return booker(types)
     }) //END OF FIRST THEN CALL (THE ONE FOR TYPES)
     .then(function(books) {
+      var uniqueTypes = [];
       /*
             This code is dependent upon two XHRs and violates
             the Single Responsibility Principle.
@@ -49,7 +50,29 @@ requirejs(
             return book;
           });
 
-          console.log("BOOKS?", books);
+      for (var i = 0; i < books.length; i++) {
+        uniqueTypes[i] = books[i].type;
+      };
+
+      console.log("uniqueTypes", uniqueTypes);
+
+       uniqueTypes = _.uniq(uniqueTypes);
+
+      // THIS ADDS ALL THE VALUES TO THE FILTER, EVEN DUPLICATES
+      // require(['hbs!../templates/option'], function(bookfile) {
+      //   $("#bookFilter").html(bookfile({ books }));
+      // });
+
+      // THIS POPULATES ONLY UNIQUE THINGS, BUT DOESN'T USE HANDLEBARS
+        outputThis ="<select><option></option>";
+        for (i = 0; i < uniqueTypes.length; i++) {
+          outputThis += "<option>"+uniqueTypes[i]+"</option>";
+        };
+        outputThis +="<select>";
+      $("#bookFilter").html(outputThis);
+
+
+      console.log("BOOKS?", books);
 
 
       require(['hbs!../templates/books'], function(bookTpl) {
