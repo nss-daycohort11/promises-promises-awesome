@@ -1,18 +1,18 @@
 {{#each books}}
-
 	<div class="row">
-	<div class="booky" booktype='{{type}}'>
-	  <div class="col-md-3">
-	  <h4>{{ title }}</h4>
-	  <h5>{{ author }}</h5>
-		<p>{{year}}:  {{publisher}}  -({{ type }})</p>
-	  </div>
-	  <div id =  class="col-md-6">
-	  <section class>{{ synopsis }}</section>
-	  </div>
-
-	</div>
-	</div>
+		<div class="booky" booktype='{{type}}'>
+		  <div class="col-md-3 col-md-offset-1">
+			  <h4>{{ title }}</h4>
+			  <h5>{{ author }}</h5>
+				<p>{{year}}:  {{publisher}}  -({{ type }})</p>
+		  </div>
+		  <div class="col-md-6">
+			  <section class>{{ synopsis }}</section>
+		  </div>
+		  <div class="col-md-2">
+			  <p></p>
+		  </div>
+		</div>
 	</div>
 {{/each}}
 
