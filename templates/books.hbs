@@ -1,4 +1,8 @@
 {{#each books}}
-  <h3>{{ title }}</h3>
-  <section>{{ type }}</section>
+	<div class="booky" booktype='{{type}}'>
+	  <h3>{{ title }}</h3>
+	  <h5>{{ author }}</h5>
+	  <p>{{year}}:  {{publisher}}  -({{ type }})</p>
+	  <section>{{ synopsis }}</section>
+	</div>
 {{/each}}
